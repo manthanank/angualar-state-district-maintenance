@@ -1,0 +1,86 @@
+<!-- As a link -->
+<nav class="navbar navbar-light" style="background-color: #ff0000">
+  <div class="container-fluid">
+    <span
+      class="navbar-text"
+      style="color: #ffffff; margin-left: 40%; margin-right: 40%"
+    >
+      State & District Maintenance
+    </span>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col">States</div>
+    <div class="col">
+      <div class="row">
+        <select class="form-select" aria-label="Default select example">
+          <option>{{ state }}</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-primary" (click)="addState()">
+            Add New State
+          </button>
+        </div>
+      </div>
+      <div class="row" *ngIf="div1">
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <input type="text" [formControl]="statesName" />
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <mat-icon (click)="states()">check_circle_outline</mat-icon>
+            </div>
+            <div class="col">
+              <mat-icon (click)="cancelState()">cancel</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">District</div>
+    <div class="col">
+      <div class="row">
+        <select class="form-select" aria-label="Default select example">
+          <option>{{ district }}</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-primary" (click)="addDistrict()">
+            Add New District
+          </button>
+        </div>
+      </div>
+      <div class="row" *ngIf="div2">
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <input type="text" [formControl]="districtName" />
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <mat-icon (click)="district()">check_circle_outline</mat-icon>
+            </div>
+            <div class="col">
+              <mat-icon (click)="cancelDistrict()">cancel</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
