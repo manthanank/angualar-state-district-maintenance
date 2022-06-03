@@ -29,17 +29,27 @@
         <div class="col">
           <div class="row">
             <div class="col">
-              <input type="text" [formControl]="stateName" />
+              <form [formGroup]="stateForm">
+                <input type="text" formControlName="stateName" />
+              </form>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="row">
             <div class="col">
-              <mat-icon (click)="states()">check_circle_outline</mat-icon>
+              <mat-icon
+                ><button (click)="states()" class="btn">
+                  check_circle_outline
+                </button></mat-icon
+              >
             </div>
             <div class="col">
-              <mat-icon (click)="cancelState()">cancel</mat-icon>
+              <mat-icon
+                ><button (click)="cancelState()" class="btn">
+                  cancel
+                </button></mat-icon
+              >
             </div>
           </div>
         </div>
@@ -68,17 +78,27 @@
         <div class="col">
           <div class="row">
             <div class="col">
-              <input type="text" [formControl]="districtName" />
+              <form [formGroup]="districtForm">
+                <input type="text" formControlName="districtName" />
+              </form>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="row">
             <div class="col">
-              <mat-icon (click)="districts()">check_circle_outline</mat-icon>
+              <mat-icon
+                ><button (click)="districts()" class="btn">
+                  check_circle_outline
+                </button></mat-icon
+              >
             </div>
             <div class="col">
-              <mat-icon (click)="cancelDistrict()">cancel</mat-icon>
+              <mat-icon
+                ><button (click)="cancelDistrict()" class="btn">
+                  cancel
+                </button></mat-icon
+              >
             </div>
           </div>
         </div>

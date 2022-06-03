@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DataService } from './shared/data.service';
 
@@ -20,19 +20,17 @@ export class AppComponent {
   updatedDistrictValues: any;
   addStateName: any;
   addDistrictName: any;
-  stateName = new FormControl('');
-  districtName = new FormControl('');
 
   constructor(
     private dataService: DataService,
     private formBuilder: FormBuilder,
     private http: HttpClient
   ) {}
-  stateForm = this.formBuilder.group({
-    stateName: this.stateName,
+  stateForm = new FormGroup({
+    stateName: new FormControl(''),
   });
-  districtForm = this.formBuilder.group({
-    districtName: this.districtName,
+  districtForm = new FormGroup({
+    districtName: new FormControl(''),
   });
   ngOnInit() {
     this.dataService.getState().subscribe((data) => {
