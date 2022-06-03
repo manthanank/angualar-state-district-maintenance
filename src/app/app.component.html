@@ -13,9 +13,9 @@
   <div class="row">
     <div class="col">States</div>
     <div class="col">
-      <div class="row" *ngFor="let item of state">
+      <div class="row">
         <select class="form-select" aria-label="Default select example">
-          <option>{{ item.state }}</option>
+          <option *ngFor="let item of stateValues">{{ item.stateName }}</option>
         </select>
       </div>
       <div class="row">
@@ -29,14 +29,14 @@
         <div class="col">
           <div class="row">
             <div class="col">
-              <input type="text" [formControl]="statesName" />
+              <input type="text" [formControl]="stateName" />
             </div>
           </div>
         </div>
         <div class="col">
           <div class="row">
             <div class="col">
-              <mat-icon (click)="states()">check_circle_outline</mat-icon>
+              <mat-icon (click)="states(data1)">check_circle_outline</mat-icon>
             </div>
             <div class="col">
               <mat-icon (click)="cancelState()">cancel</mat-icon>
@@ -50,9 +50,11 @@
   <div class="row">
     <div class="col">District</div>
     <div class="col">
-      <div class="row" *ngFor="let item of district">
+      <div class="row">
         <select class="form-select" aria-label="Default select example">
-          <option>{{ item.district }}</option>
+          <option *ngFor="let item of districtValues">
+            {{ item.districtName }}
+          </option>
         </select>
       </div>
       <div class="row">
@@ -73,7 +75,9 @@
         <div class="col">
           <div class="row">
             <div class="col">
-              <mat-icon (click)="district()">check_circle_outline</mat-icon>
+              <mat-icon (click)="districts(data2)"
+                >check_circle_outline</mat-icon
+              >
             </div>
             <div class="col">
               <mat-icon (click)="cancelDistrict()">cancel</mat-icon>

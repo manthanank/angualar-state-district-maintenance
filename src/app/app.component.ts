@@ -10,23 +10,26 @@ import { DataService } from './shared/data.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  data1: any;
+  data2: any;
   div1: boolean = false;
   div2: boolean = false;
-  state: any;
-  district: any;
-
-  statesName = new FormControl('');
+  stateValues: any;
+  districtValues: any;
+  addStateName: any;
+  addDistrictName: any;
+  stateName = new FormControl('');
   districtName = new FormControl('');
 
   constructor(private dataService: DataService) {}
   ngOnInit() {
     this.dataService.getStates().subscribe((data: any) => {
-      this.state = data;
-      console.log(this.state);
+      this.stateValues = data;
+      console.log(this.stateValues);
     });
     this.dataService.getDistricts().subscribe((data: any) => {
-      this.district = data;
-      console.log(this.district);
+      this.districtValues = data;
+      console.log(this.districtValues);
     });
   }
   addState() {
@@ -34,9 +37,14 @@ export class AppComponent {
   }
   cancelState() {
     this.div1 = false;
-    this.statesName.reset();
+    this.stateName.reset();
   }
-  states() {}
+  states(data: any) {
+    console.log(data);
+    this.dataService.postStates(data).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
   addDistrict() {
     this.div2 = true;
   }
@@ -44,5 +52,10 @@ export class AppComponent {
     this.div2 = false;
     this.districtName.reset();
   }
-  districts() {}
+  districts(data: any) {
+    console.log(data);
+    this.dataService.postDistricts(data).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
 }
