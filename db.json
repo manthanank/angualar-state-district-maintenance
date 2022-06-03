@@ -1,20 +1,4 @@
 {
-  "states": [
-    {
-      "id": 1,
-      "name": ""
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    }
-  ],
-  "districts": [
-    {
-      "id": 1,
-      "name": ""
-    }
-  ]
+  "states": [],
+  "districts": []
 }

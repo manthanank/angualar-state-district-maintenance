@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DataService } from './shared/data.service';
 
@@ -21,7 +21,17 @@ export class AppComponent {
   stateName = new FormControl('');
   districtName = new FormControl('');
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private formBuilder: FormBuilder,
+    private http: HttpClient
+  ) {}
+  stateForm = this.formBuilder.group({
+    stateName: this.stateName,
+  });
+  districtForm = this.formBuilder.group({
+    districtName: this.districtName,
+  });
   ngOnInit() {
     this.dataService.getStates().subscribe((data: any) => {
       this.stateValues = data;
@@ -31,6 +41,14 @@ export class AppComponent {
       this.districtValues = data;
       console.log(this.districtValues);
     });
+    this.http.get('localhost:4000/api/data').subscribe((data: any) => {
+      console.log(data);
+    });
+    this.http
+      .get('http://localhost:8080/api/tutorials')
+      .subscribe((data: any) => {
+        console.log(data);
+      });
   }
   addState() {
     this.div1 = true;
@@ -39,11 +57,24 @@ export class AppComponent {
     this.div1 = false;
     this.stateName.reset();
   }
-  states(data: any) {
-    console.log(data);
-    this.dataService.postStates(data).subscribe((data: any) => {
+  states() {
+    this.http
+      .post('http://localhost:3000/states', this.stateForm.value)
+      .subscribe((data: any) => {
+        console.log(data);
+      });
+
+    this.http.get('http://localhost:3000/states').subscribe((data: any) => {
       console.log(data);
     });
+    // this.dataService.getStates().subscribe((data: any) => {
+    //   this.stateValues = data;
+    //   console.log(this.stateValues);
+    // });
+    this.close();
+  }
+  close() {
+    this.div1 = false;
   }
   addDistrict() {
     this.div2 = true;
@@ -52,10 +83,11 @@ export class AppComponent {
     this.div2 = false;
     this.districtName.reset();
   }
-  districts(data: any) {
-    console.log(data);
-    this.dataService.postDistricts(data).subscribe((data: any) => {
-      console.log(data);
-    });
+  districts() {
+    this.http
+      .post('http://localhost:3000/districts', this.districtForm.value)
+      .subscribe((data: any) => {
+        console.log(data);
+      });
   }
 }
