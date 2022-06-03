@@ -13,9 +13,9 @@
   <div class="row">
     <div class="col">States</div>
     <div class="col">
-      <div class="row">
+      <div class="row" *ngFor="let item of state">
         <select class="form-select" aria-label="Default select example">
-          <option>{{ state }}</option>
+          <option>{{ item.state }}</option>
         </select>
       </div>
       <div class="row">
@@ -50,9 +50,9 @@
   <div class="row">
     <div class="col">District</div>
     <div class="col">
-      <div class="row">
+      <div class="row" *ngFor="let item of district">
         <select class="form-select" aria-label="Default select example">
-          <option>{{ district }}</option>
+          <option>{{ item.district }}</option>
         </select>
       </div>
       <div class="row">

@@ -18,8 +18,17 @@ export class AppComponent {
   statesName = new FormControl('');
   districtName = new FormControl('');
 
-  constructor() {}
-  ngOnInit() {}
+  constructor(private dataService: DataService) {}
+  ngOnInit() {
+    this.dataService.getStates().subscribe((data: any) => {
+      this.state = data;
+      console.log(this.state);
+    });
+    this.dataService.getDistricts().subscribe((data: any) => {
+      this.district = data;
+      console.log(this.district);
+    });
+  }
   addState() {
     this.div1 = true;
   }
