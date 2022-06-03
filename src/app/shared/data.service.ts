@@ -14,4 +14,7 @@ export class DataService {
   postDatas(data: any): Observable<any> {
     return this.http.post<any>('http://localhost:4000/api/data', data);
   }
+  stateDatas(): Observable<any> {
+    return this.http.get<any>('http://localhost:3000/states');
+  }
 }
