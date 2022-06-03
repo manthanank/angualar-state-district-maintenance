@@ -16,6 +16,8 @@ export class AppComponent {
   div2: boolean = false;
   stateValues: any;
   districtValues: any;
+  updatedStateValues: any;
+  updatedDistrictValues: any;
   addStateName: any;
   addDistrictName: any;
   stateName = new FormControl('');
@@ -33,47 +35,59 @@ export class AppComponent {
     districtName: this.districtName,
   });
   ngOnInit() {
-    this.dataService.getStates().subscribe((data: any) => {
+    this.dataService.getState().subscribe((data) => {
       this.stateValues = data;
       console.log(this.stateValues);
     });
-    this.dataService.getDistricts().subscribe((data: any) => {
+    this.dataService.getDistrict().subscribe((data) => {
       this.districtValues = data;
       console.log(this.districtValues);
     });
-    this.http.get('localhost:4000/api/data').subscribe((data: any) => {
-      console.log(data);
-    });
-    this.http
-      .get('http://localhost:8080/api/tutorials')
-      .subscribe((data: any) => {
-        console.log(data);
-      });
+    // this.dataService.getStates().subscribe((data: any) => {
+    //   this.stateValues = data;
+    //   console.log(this.stateValues);
+    // });
+    // this.dataService.getDistricts().subscribe((data: any) => {
+    //   this.districtValues = data;
+    //   console.log(this.districtValues);
+    // });
+    // this.http.get('localhost:4000/api/data').subscribe((data: any) => {
+    //   console.log(data);
+    // });
+    // this.http
+    //   .get('http://localhost:8080/api/tutorials')
+    //   .subscribe((data: any) => {
+    //     console.log(data);
+    //   });
   }
   addState() {
     this.div1 = true;
   }
   cancelState() {
     this.div1 = false;
-    this.stateName.reset();
   }
   states() {
-    this.http
-      .post('http://localhost:3000/states', this.stateForm.value)
-      .subscribe((data: any) => {
-        console.log(data);
-      });
-
-    this.http.get('http://localhost:3000/states').subscribe((data: any) => {
-      console.log(data);
+    this.dataService.postState(this.stateForm.value).subscribe((data) => {
+      this.updatedStateValues = data;
+      console.log(this.updatedStateValues);
     });
-    // this.dataService.getStates().subscribe((data: any) => {
-    //   this.stateValues = data;
-    //   console.log(this.stateValues);
+    // this.http
+    //   .post('http://localhost:3000/states', this.stateForm.value)
+    //   .subscribe((data: any) => {
+    //     console.log(data);
+    //   });
+
+    // this.http.get('http://localhost:3000/states').subscribe((data: any) => {
+    //   console.log(data);
     // });
-    this.close();
+    this.dataService.getState().subscribe((data) => {
+      this.stateValues = data;
+      console.log(this.stateValues);
+    });
+    this.stateForm.reset();
+    this.closeState();
   }
-  close() {
+  closeState() {
     this.div1 = false;
   }
   addDistrict() {
@@ -81,13 +95,34 @@ export class AppComponent {
   }
   cancelDistrict() {
     this.div2 = false;
-    this.districtName.reset();
   }
   districts() {
-    this.http
-      .post('http://localhost:3000/districts', this.districtForm.value)
-      .subscribe((data: any) => {
-        console.log(data);
-      });
+    this.dataService.postDistrict(this.districtForm.value).subscribe((data) => {
+      console.log(data);
+      this.updatedDistrictValues = data;
+      console.log(this.updatedDistrictValues);
+    });
+    // this.http
+    //   .post('http://localhost:3000/districts', this.districtForm.value)
+    //   .subscribe((data: any) => {
+    //     console.log(data);
+    //   });
+    this.dataService.getDistrict().subscribe((data) => {
+      this.districtValues = data;
+      console.log(this.districtValues);
+    });
+    this.districtForm.reset();
+    this.closeDistrict();
   }
+  closeDistrict() {
+    this.div2 = false;
+  }
+
+  // changeStatevalue(e: any) {
+  //   //console.log(e.target.value);
+  //   this.dataService.getState().subscribe((data) => {
+  //     this.stateValues = data;
+  //     console.log(this.stateValues);
+  //   });
+  // }
 }
