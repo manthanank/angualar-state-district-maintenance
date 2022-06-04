@@ -39,7 +39,11 @@
           <div class="row">
             <div class="col">
               <mat-icon
-                ><button (click)="states()" class="btn">
+                ><button
+                  (click)="states()"
+                  class="btn"
+                  [disabled]="!stateForm.valid"
+                >
                   check_circle_outline
                 </button></mat-icon
               >
@@ -88,7 +92,11 @@
           <div class="row">
             <div class="col">
               <mat-icon
-                ><button (click)="districts()" class="btn">
+                ><button
+                  (click)="districts()"
+                  class="btn"
+                  [disabled]="!districtForm.valid"
+                >
                   check_circle_outline
                 </button></mat-icon
               >
