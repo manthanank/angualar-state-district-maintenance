@@ -20,7 +20,11 @@
       </div>
       <div class="row">
         <div class="col">
-          <button type="button" class="btn btn-primary" (click)="addState()">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="showaddStatebtn()"
+          >
             Add New State
           </button>
         </div>
@@ -39,11 +43,7 @@
           <div class="row">
             <div class="col">
               <mat-icon
-                ><button
-                  (click)="states()"
-                  class="btn"
-                  [disabled]="!stateForm.valid"
-                >
+                ><button class="btn" [disabled]="!stateForm.valid">
                   check_circle_outline
                 </button></mat-icon
               >
@@ -73,7 +73,11 @@
       </div>
       <div class="row">
         <div class="col">
-          <button type="button" class="btn btn-primary" (click)="addDistrict()">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="showaddDistrictbtn()"
+          >
             Add New District
           </button>
         </div>
@@ -92,11 +96,7 @@
           <div class="row">
             <div class="col">
               <mat-icon
-                ><button
-                  (click)="districts()"
-                  class="btn"
-                  [disabled]="!districtForm.valid"
-                >
+                ><button class="btn" [disabled]="!districtForm.valid">
                   check_circle_outline
                 </button></mat-icon
               >

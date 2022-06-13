@@ -25,7 +25,6 @@ export class AppComponent {
   updatedDistrictValues: any;
   addStateName: any;
   addDistrictName: any;
-
   stateForm = new FormGroup({
     stateName: new FormControl('', Validators.required),
   });
@@ -37,97 +36,62 @@ export class AppComponent {
     private dataService: DataService,
     private formBuilder: FormBuilder,
     private http: HttpClient
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.dataService.getState().subscribe((data) => {
-      this.stateValues = data;
-      console.log(this.stateValues);
-    });
-    this.dataService.getDistrict().subscribe((data) => {
-      this.districtValues = data;
-      console.log(this.districtValues);
-    });
-    // this.dataService.getStates().subscribe((data: any) => {
+    // this.dataService.getState().subscribe((data) => {
     //   this.stateValues = data;
     //   console.log(this.stateValues);
     // });
-    // this.dataService.getDistricts().subscribe((data: any) => {
+    // this.dataService.getDistrict().subscribe((data) => {
     //   this.districtValues = data;
     //   console.log(this.districtValues);
     // });
-    // this.http.get('localhost:4000/api/data').subscribe((data: any) => {
-    //   console.log(data);
-    // });
-    // this.http
-    //   .get('http://localhost:8080/api/tutorials')
-    //   .subscribe((data: any) => {
-    //     console.log(data);
-    //   });
   }
-  addState() {
+  showaddStatebtn() {
     this.div1 = true;
   }
   cancelState() {
     this.div1 = false;
   }
-  states() {
-    this.dataService.postState(this.stateForm.value).subscribe((data) => {
-      this.updatedStateValues = data;
-      console.log(this.updatedStateValues);
-    });
-    // this.http
-    //   .post('http://localhost:3000/states', this.stateForm.value)
-    //   .subscribe((data: any) => {
-    //     console.log(data);
-    //   });
-
-    // this.http.get('http://localhost:3000/states').subscribe((data: any) => {
-    //   console.log(data);
-    // });
-    this.dataService.getState().subscribe((data) => {
-      this.stateValues = data;
-      console.log(this.stateValues);
-    });
-    this.stateForm.reset();
-    this.closeState();
-  }
+  // states() {
+  //   this.dataService.postState(this.stateForm.value).subscribe((data) => {
+  //     this.updatedStateValues = data;
+  //     console.log(this.updatedStateValues);
+  //   });
+  //   this.dataService.getState().subscribe((data) => {
+  //     this.stateValues = data;
+  //     console.log(this.stateValues);
+  //   });
+  //   this.stateForm.reset();
+  //   this.closeState();
+  // }
   closeState() {
     this.div1 = false;
   }
-  addDistrict() {
+  showaddDistrictbtn() {
     this.div2 = true;
   }
   cancelDistrict() {
     this.div2 = false;
   }
-  districts() {
-    this.dataService.postDistrict(this.districtForm.value).subscribe((data) => {
-      console.log(data);
-      this.updatedDistrictValues = data;
-      console.log(this.updatedDistrictValues);
-    });
-    // this.http
-    //   .post('http://localhost:3000/districts', this.districtForm.value)
-    //   .subscribe((data: any) => {
-    //     console.log(data);
-    //   });
-    this.dataService.getDistrict().subscribe((data) => {
-      this.districtValues = data;
-      console.log(this.districtValues);
-    });
-    this.districtForm.reset();
-    this.closeDistrict();
-  }
+  // districts() {
+  //   this.dataService.postDistrict(this.districtForm.value).subscribe((data) => {
+  //     console.log(data);
+  //     this.updatedDistrictValues = data;
+  //     console.log(this.updatedDistrictValues);
+  //   });
+  //   this.dataService.getDistrict().subscribe((data) => {
+  //     this.districtValues = data;
+  //     console.log(this.districtValues);
+  //   });
+  //   this.districtForm.reset();
+  //   this.closeDistrict();
+  // }
   closeDistrict() {
     this.div2 = false;
   }
-
-  // changeStatevalue(e: any) {
-  //   //console.log(e.target.value);
-  //   this.dataService.getState().subscribe((data) => {
-  //     this.stateValues = data;
-  //     console.log(this.stateValues);
-  //   });
-  // }
+  addState() {
+    console.log(this.stateForm.value);
+  }
 }
