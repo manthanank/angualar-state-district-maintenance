@@ -15,6 +15,8 @@ import { DataService } from './shared/data.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  stateName: any;
+  data: any;
   data1: any;
   data2: any;
   div1: boolean = false;
@@ -25,13 +27,16 @@ export class AppComponent {
   updatedDistrictValues: any;
   addStateName: any;
   addDistrictName: any;
-  stateForm = new FormGroup({
-    stateName: new FormControl('', Validators.required),
+  dropDownForm = new FormGroup({
+    state: new FormGroup({
+      stateName: new FormControl('', Validators.required),
+    }),
+    // states: new FormControl('', Validators.required),
+    district: new FormGroup({
+      districtName: new FormControl('', Validators.required),
+    }),
+    // districts: new FormControl('', Validators.required),
   });
-  districtForm = new FormGroup({
-    districtName: new FormControl('', Validators.required),
-  });
-
   constructor(
     private dataService: DataService,
     private formBuilder: FormBuilder,
@@ -92,6 +97,13 @@ export class AppComponent {
     this.div2 = false;
   }
   addState() {
-    console.log(this.stateForm.value);
+    console.log(this.dropDownForm.value);
+    this.closeState();
+    this.dropDownForm.reset();
+  }
+  addDistrict() {
+    console.log(this.dropDownForm.value);
+    this.closeDistrict();
+    this.dropDownForm.reset();
   }
 }

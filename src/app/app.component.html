@@ -10,107 +10,107 @@
   </div>
 </nav>
 <div class="container">
-  <div class="row">
-    <div class="col">States</div>
-    <div class="col">
-      <div class="row">
-        <select class="form-select" aria-label="Default select example">
-          <option *ngFor="let item of stateValues">{{ item.stateName }}</option>
-        </select>
-      </div>
-      <div class="row">
-        <div class="col">
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="showaddStatebtn()"
-          >
-            Add New State
-          </button>
+  <form [formGroup]="dropDownForm">
+    <div class="row">
+      <div class="col">States</div>
+      <div class="col">
+        <div class="row">
+          <select class="form-select" aria-label="Default select example">
+            <option *ngFor="let item of stateValues">
+              {{ item.stateName }}
+            </option>
+          </select>
         </div>
-      </div>
-      <div class="row" *ngIf="div1">
-        <div class="col">
-          <div class="row">
-            <div class="col">
-              <form [formGroup]="stateForm">
+        <div class="row">
+          <div class="col">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="showaddStatebtn()"
+            >
+              Add New State
+            </button>
+          </div>
+        </div>
+        <div class="row" *ngIf="div1">
+          <div class="col">
+            <div class="row">
+              <div class="col" formGroupName="state">
                 <input type="text" formControlName="stateName" />
-              </form>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <div class="col">
-              <mat-icon
-                ><button class="btn" [disabled]="!stateForm.valid">
-                  check_circle_outline
-                </button></mat-icon
-              >
-            </div>
-            <div class="col">
-              <mat-icon
-                ><button (click)="cancelState()" class="btn">
-                  cancel
-                </button></mat-icon
-              >
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <mat-icon
+                  ><button class="btn" (click)="addState()">
+                    check_circle_outline
+                  </button></mat-icon
+                >
+              </div>
+              <div class="col">
+                <mat-icon
+                  ><button (click)="cancelState()" class="btn">
+                    cancel
+                  </button></mat-icon
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col">District</div>
-    <div class="col">
-      <div class="row">
-        <select class="form-select" aria-label="Default select example">
-          <option *ngFor="let item of districtValues">
-            {{ item.districtName }}
-          </option>
-        </select>
-      </div>
-      <div class="row">
-        <div class="col">
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="showaddDistrictbtn()"
-          >
-            Add New District
-          </button>
+    <div class="row">
+      <div class="col">District</div>
+      <div class="col">
+        <div class="row">
+          <select class="form-select" aria-label="Default select example">
+            <option *ngFor="let item of districtValues">
+              {{ item.districtName }}
+            </option>
+          </select>
         </div>
-      </div>
-      <div class="row" *ngIf="div2">
-        <div class="col">
-          <div class="row">
-            <div class="col">
-              <form [formGroup]="districtForm">
-                <input type="text" formControlName="districtName" />
-              </form>
-            </div>
+        <div class="row">
+          <div class="col">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="showaddDistrictbtn()"
+            >
+              Add New District
+            </button>
           </div>
         </div>
-        <div class="col">
-          <div class="row">
-            <div class="col">
-              <mat-icon
-                ><button class="btn" [disabled]="!districtForm.valid">
-                  check_circle_outline
-                </button></mat-icon
-              >
+        <div class="row" *ngIf="div2">
+          <div class="col">
+            <div class="row">
+              <div class="col" formGroupName="district">
+                <input type="text" formControlName="districtName" />
+              </div>
             </div>
-            <div class="col">
-              <mat-icon
-                ><button (click)="cancelDistrict()" class="btn">
-                  cancel
-                </button></mat-icon
-              >
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <mat-icon
+                  ><button class="btn" (click)="addDistrict()">
+                    check_circle_outline
+                  </button></mat-icon
+                >
+              </div>
+              <div class="col">
+                <mat-icon
+                  ><button (click)="cancelDistrict()" class="btn">
+                    cancel
+                  </button></mat-icon
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </div>
